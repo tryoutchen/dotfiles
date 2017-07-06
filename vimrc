@@ -55,8 +55,7 @@ if has("autocmd")
 endif
 
 syntax on
-" set smartindent
-" set smartindent shiftwidth=4
+colorscheme elflord
 set ruler
 set number
 
@@ -64,6 +63,10 @@ set incsearch
 set hlsearch
 set tabstop=4  
 set shiftwidth=4  
+" set laststatus=2 " status line always visible
+" set statusline+=%F " display file path
+
+nnoremap <silent> <Space> :let @/ = ""<CR>
 
 " Press F8 to enable taglist
 nnoremap <silent> <F8> :TlistToggle<CR><CR>
@@ -71,3 +74,22 @@ let Tlist_Show_One_File=0                    " 只显示当前文件的tags
 let Tlist_Exit_OnlyWindow=1                  " 如果Taglist窗口是最后一个窗口则退出Vim
 let Tlist_Use_Right_Window=0                 " 在右侧窗口中显示
 let Tlist_File_Fold_Auto_Close=1             " 自动折叠
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" cscope
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"if has("cscope")
+"   set cscopetag
+"   set csto=0
+"   " add any cscope database in current directory
+"   if filereadable("cscope.out")
+"       cs add cscope.out
+"   " else add the database pointed to by environment variable
+"   elseif $CSCOPE_DB != ""
+"       cs add $CSCOPE_DB
+"   endif
+"endif
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
