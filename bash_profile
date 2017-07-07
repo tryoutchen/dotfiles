@@ -6,8 +6,8 @@ fi
 ###############################################################################
 ##### Customization
 ###############################################################################
-PATH=~/bin:$PATH
-PATH=~/Android/Sdk/platform-tools:$PATH
+PATH=$PATH:~/bin
+PATH=$PATH:~/Android/Sdk/platform-tools
 alias load="source build/envsetup.sh"
 alias bell="echo -ne '\007'"
 
