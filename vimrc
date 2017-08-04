@@ -1,7 +1,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VBundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if filereadable('~/.vim/bundle/Vundle.vim')
+if filereadable(expand('~/.vim/bundle/Vundle.vim'))
   set nocompatible              " be iMproved, required
   filetype off                  " required
   " set the runtime path to include Vundle and initialize
