@@ -1,7 +1,8 @@
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VBundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if filereadable(expand('~/.vim/bundle/Vundle.vim'))
+if filereadable(expand('~/.vim/bundle/Vundle.vim/autoload/vundle.vim'))
   set nocompatible              " be iMproved, required
   filetype off                  " required
   " set the runtime path to include Vundle and initialize
@@ -29,6 +30,7 @@ if filereadable(expand('~/.vim/bundle/Vundle.vim'))
   " Install L9 and avoid a Naming conflict if you've already installed a
   " different version somewhere else.
   " Plugin 'ascenator/L9', {'name': 'newL9'}
+  Plugin 'ronakg/quickr-cscope.vim'
 
   " All of your Plugins must be added before the following line
   call vundle#end()            " required
@@ -80,16 +82,30 @@ let Tlist_File_Fold_Auto_Close=1             " 自动折叠
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " cscope
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"if has("cscope")
-"   set cscopetag
-"   set csto=0
-"   " add any cscope database in current directory
-"   if filereadable("cscope.out")
-"       cs add cscope.out
-"   " else add the database pointed to by environment variable
-"   elseif $CSCOPE_DB != ""
-"       cs add $CSCOPE_DB
-"   endif
-"endif
+if has("cscope")
+   set cscopetag
+   set csto=0
+   " add any cscope database in current directory
+   if filereadable("cscope.out")
+       cs add cscope.out
+   " else add the database pointed to by environment variable
+   elseif $CSCOPE_DB != ""
+       cs add $CSCOPE_DB
+   endif
+
+"  let g:quickr_cscope_keymaps = 0
+"
+"nmap <leader>fs <plug>(quickr_cscope_symbols)
+"nmap <leader>fg <plug>(quickr_cscope_global)
+"nmap <leader>fc <plug>(quickr_cscope_callers)
+"nmap <leader>f <plug>(quickr_cscope_files)
+"nmap <leader>fs <plug>(quickr_cscope_includes)
+"nmap <leader>fs <plug>(quickr_cscope_text)
+"nmap <leader>fs <plug>(quickr_cscope_egrep)
+"nmap <leader>fs <plug>(quickr_cscope_functions)
+
+  nnoremap <leader>l :botright cwindow<CR>
+
+endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
