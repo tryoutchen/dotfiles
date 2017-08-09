@@ -30,13 +30,14 @@ if filereadable(expand('~/.vim/bundle/Vundle.vim/autoload/vundle.vim'))
   " Install L9 and avoid a Naming conflict if you've already installed a
   " different version somewhere else.
   " Plugin 'ascenator/L9', {'name': 'newL9'}
-  Plugin 'ronakg/quickr-cscope.vim'
+  Plugin 'taglist.vim'
+  Plugin 'tryoutchen/quickr-cscope.vim'
 
   " All of your Plugins must be added before the following line
   call vundle#end()            " required
-  filetype plugin indent on    " required
+  " filetype plugin indent on    " required
   " To ignore plugin indent changes, instead use:
-  "filetype plugin on
+  filetype plugin on
   "
   " Brief help
   " :PluginList       - lists configured plugins
@@ -50,17 +51,18 @@ if filereadable(expand('~/.vim/bundle/Vundle.vim/autoload/vundle.vim'))
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 endif
 
-" Uncomment the following to have Vim jump to the last position when
-" reopening a file
 if has("autocmd")
+  " Jump to the last position when reopening a file
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+  " Disable automatic comment insertion
+  au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 endif
 
 syntax on
 colorscheme elflord
 set ruler
 set number
-
+" set cursorline
 set incsearch
 set hlsearch
 set tabstop=4  
@@ -83,29 +85,42 @@ let Tlist_File_Fold_Auto_Close=1             " 自动折叠
 " cscope
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("cscope")
-   set cscopetag
-   set csto=0
-   " add any cscope database in current directory
-   if filereadable("cscope.out")
-       cs add cscope.out
-   " else add the database pointed to by environment variable
-   elseif $CSCOPE_DB != ""
-       cs add $CSCOPE_DB
-   endif
+  set cscopetag
+  set csto=0
+  " add any cscope database in current directory
+  if filereadable("cscope.out")
+      cs add cscope.out
+  " else add the database pointed to by environment variable
+  elseif $CSCOPE_DB != ""
+      cs add $CSCOPE_DB
+  endif
 
-"  let g:quickr_cscope_keymaps = 0
-"
-"nmap <leader>fs <plug>(quickr_cscope_symbols)
-"nmap <leader>fg <plug>(quickr_cscope_global)
-"nmap <leader>fc <plug>(quickr_cscope_callers)
-"nmap <leader>f <plug>(quickr_cscope_files)
-"nmap <leader>fs <plug>(quickr_cscope_includes)
-"nmap <leader>fs <plug>(quickr_cscope_text)
-"nmap <leader>fs <plug>(quickr_cscope_egrep)
-"nmap <leader>fs <plug>(quickr_cscope_functions)
+  let g:quickr_cscope_keymaps = 0
+  let g:quickr_cscope_use_qf_g = 1
+  let mapleader = ","
 
-  nnoremap <leader>l :botright cwindow<CR>
+  nmap <leader>fg <plug>(quickr_cscope_global)
+  nmap <leader>fs <plug>(quickr_cscope_symbols)
+  nmap <leader>fc <plug>(quickr_cscope_callers)
+  nmap <leader>ff <plug>(quickr_cscope_files)
+  nmap <leader>fi <plug>(quickr_cscope_includes)
+  nmap <leader>ft <plug>(quickr_cscope_text)
+  nmap <leader>fd <plug>(quickr_cscope_functions)
+  nmap <leader>fe <plug>(quickr_cscope_egrep)
 
+  vmap <leader>fg <plug>(quickr_cscope_global)
+  vmap <leader>fs <plug>(quickr_cscope_symbols)
+  vmap <leader>fc <plug>(quickr_cscope_callers)
+  vmap <leader>ff <plug>(quickr_cscope_files)
+  vmap <leader>fi <plug>(quickr_cscope_includes)
+  vmap <leader>ft <plug>(quickr_cscope_text)
+  vmap <leader>fd <plug>(quickr_cscope_functions)
+  vmap <leader>fe <plug>(quickr_cscope_egrep)
+
+  nmap <leader>l :botright cwindow<CR>
+  vmap <leader>l :botright cwindow<CR>
+
+  command! -bang -nargs=* -complete=file Cs call Quickr_cscope('grep<bang>',<q-args>)
 endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
