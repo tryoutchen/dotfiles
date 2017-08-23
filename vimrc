@@ -30,6 +30,8 @@ if filereadable(expand('~/.vim/bundle/Vundle.vim/autoload/vundle.vim'))
   " Install L9 and avoid a Naming conflict if you've already installed a
   " different version somewhere else.
   " Plugin 'ascenator/L9', {'name': 'newL9'}
+  Plugin 'ctrlpvim/ctrlp.vim'
+  Plugin 'nanotech/jellybeans.vim'
   Plugin 'taglist.vim'
   Plugin 'tryoutchen/quickr-cscope.vim'
 
@@ -63,6 +65,7 @@ colorscheme elflord
 set ruler
 set number
 " set cursorline
+set expandtab
 set incsearch
 set hlsearch
 set tabstop=4  
@@ -73,13 +76,11 @@ set shiftwidth=4
 nnoremap <silent> <Space> :let @/ = ""<CR>
 
 " Press F8 to enable taglist
-nnoremap <silent> <F8> :TlistToggle<CR><CR>
+nnoremap <silent> <F4> :TlistToggle<CR><CR>
 let Tlist_Show_One_File=0                    " 只显示当前文件的tags
 let Tlist_Exit_OnlyWindow=1                  " 如果Taglist窗口是最后一个窗口则退出Vim
 let Tlist_Use_Right_Window=0                 " 在右侧窗口中显示
 let Tlist_File_Fold_Auto_Close=1             " 自动折叠
-
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " cscope
