@@ -32,6 +32,7 @@ if filereadable(expand('~/.vim/bundle/Vundle.vim/autoload/vundle.vim'))
   " Plugin 'ascenator/L9', {'name': 'newL9'}
   Plugin 'ctrlpvim/ctrlp.vim'
   Plugin 'nanotech/jellybeans.vim'
+  Plugin 'scrooloose/nerdtree'
   Plugin 'taglist.vim'
   Plugin 'tryoutchen/quickr-cscope.vim'
 
@@ -122,6 +123,8 @@ if has("cscope")
   vmap <leader>l :botright cwindow<CR>
 
   command! -bang -nargs=* -complete=file Cs call Quickr_cscope('grep<bang>',<q-args>)
+
+  map <C-n> :NERDTreeToggle<CR>
 endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
